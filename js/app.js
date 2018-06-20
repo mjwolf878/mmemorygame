@@ -1,5 +1,5 @@
 const cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor','fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf','fa-bicycle',  'fa-bicycle', 'fa-bomb', 'fa-bomb'];
-//with help from Robert/tutor/youtube videos//
+//with help from Robert/tutor/youtube videos//https://www.youtube.com/watch?v=c_ohDPWmsM0&t=338s
 const deck = document.querySelector('.deck');
 const moveCounter = document.querySelector('.moves');
 let moves = 0;
@@ -19,7 +19,7 @@ function initGame() {      //video with Udacity Mike //
     deck.innerHTML = cardHTML.join(" ");
     makeStars(star);
 }
-// timer not sure it works, but I tried. the clear interval erases cards so I disabled it//with help from youtube
+// timer not sure it works, but I tried. the clear interval erases cards so I disabled it//with help from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript
     second = t;
     minute = 0;
     var timer = document.querySelector(".timer");
@@ -28,7 +28,7 @@ function initGame() {      //video with Udacity Mike //
 
 initGame();
 
-function makeCard(card) { //with help form Robert//youtube videos//
+function makeCard(card) { //with help form Robert//youtube videos//https://www.youtube.com/watch?v=c_ohDPWmsM0&t=338s
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
 
@@ -63,7 +63,7 @@ allCards.forEach(function(card) { //from video Udacity Mike //
 
             // if  2 open cards //
 
-            if (openCards.length > 1) {
+            if (openCards.length > 1) { //udacity mike
                 // check if they match
                 if (openCards[0].dataset.card == openCards[1].dataset.card) {
                     console.log(openCards);
@@ -83,7 +83,7 @@ allCards.forEach(function(card) { //from video Udacity Mike //
                     if (matchedCards.length == 16) {
                         winner(moves);
                     }
-                } else {
+                } else { //udacity mike
                     // add move
                     movesCount(1);
                     star -= 1;
@@ -103,7 +103,7 @@ allCards.forEach(function(card) { //from video Udacity Mike //
     });
 });
 //open
-function open(el) { //help from Robert/youtube videos
+function open(el) { //help from Robert/youtube videos//https://www.youtube.com/watch?v=JQu4i7Ok1EE&list=PLNgOYdAlV1KF3XlKjMh1zVifRJfBLQg_q
     el.classList.add('open', 'show');
 }
 //match
@@ -111,7 +111,7 @@ function match(el) {
     el.classList.add('open', 'show', 'match');
 }
 
-//moves counter
+//moves counter //https://www.youtube.com/watch?v=lX64QPxtjBs&t=25s
 function movesCount(i) {
     moves += i;
     moveCounter.innerText = moves;
@@ -129,7 +129,7 @@ function makeStars(el) { //help from Robert/youtube videos
     }
 }
 
-function winner(moves) { //help form Robert and youtube videos and slack
+function winner(moves) { //help form Robert and youtube videos and slack//https://www.youtube.com/watch?v=3MMjTYVs5is&t=3s
     showWin.style.display = 'marker';
     showWin.innerHTML = `<h1>Congrats! It took ${moves} moves</h1>
                                 <h1>You earned ${star} stars</h1>
