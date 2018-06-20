@@ -1,5 +1,5 @@
 const cards = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor','fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf','fa-bicycle',  'fa-bicycle', 'fa-bomb', 'fa-bomb'];
-
+//with help from Robert/tutor/youtube videos//
 const deck = document.querySelector('.deck');
 const moveCounter = document.querySelector('.moves');
 let moves = 0;
@@ -19,7 +19,7 @@ function initGame() {      //video with Udacity Mike //
     deck.innerHTML = cardHTML.join(" ");
     makeStars(star);
 }
-// timer
+// timer not sure it works, but I tried. the clear interval erases cards so I disabled it//with help from youtube
     second = t;
     minute = 0;
     var timer = document.querySelector(".timer");
@@ -28,7 +28,7 @@ function initGame() {      //video with Udacity Mike //
 
 initGame();
 
-function makeCard(card) {
+function makeCard(card) { //with help form Robert//youtube videos//
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
 
@@ -49,7 +49,7 @@ function shuffle(array) {
     return array;
 }
 
-const allCards = document.querySelectorAll('.card');
+const allCards = document.querySelectorAll('.card'); // from video with Mike Udacity
 let openCards = [];
 let matchedCards = [];
 allCards.forEach(function(card) { //from video Udacity Mike //
@@ -103,7 +103,7 @@ allCards.forEach(function(card) { //from video Udacity Mike //
     });
 });
 //open
-function open(el) {
+function open(el) { //help from Robert/youtube videos
     el.classList.add('open', 'show');
 }
 //match
@@ -116,7 +116,7 @@ function movesCount(i) {
     moves += i;
     moveCounter.innerText = moves;
 }
-function makeStars(el) {
+function makeStars(el) { //help from Robert/youtube videos
     while (stars.hasChildNodes()) {
         stars.removeChild(stars.firstChild);
     }
@@ -129,7 +129,7 @@ function makeStars(el) {
     }
 }
 
-function winner(moves) {
+function winner(moves) { //help form Robert and youtube videos and slack
     showWin.style.display = 'marker';
     showWin.innerHTML = `<h1>Congrats! It took ${moves} moves</h1>
                                 <h1>You earned ${star} stars</h1>
