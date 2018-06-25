@@ -4,13 +4,27 @@ const deck = document.querySelector('.deck');
 const moveCounter = document.querySelector('.moves');
 let moves = 0;
 
-const showWin = document.querySelector('.win');
+const cardsWin = document.querySelector('.win'); //changed name because other grader didn't like previous name // 
 const resetWon = document.getElementById('reset-won');
 const restart = document.querySelector('.restart');
 
 const stars = document.querySelector('.stars');
 let star = 3;
-let t = 1;
+//new timer, works thanks to bobbodigig //
+const time = document.getElementById("time"); //got from https://codepen.io/bobbidigi34/pen/XqvbGN // my timer was not working, got help here
+let t = 0;
+
+function Timer() {
+  var timer = setInterval(function() {
+    console.log(t);
+    t++;
+    if (t >= 0) {
+      time.innerHTML = t; /*clearInterval(timer);*/
+    }
+  }, 1000);
+}
+
+var timer = new Timer();
 
 function initGame() {      //video with Udacity Mike //
     let cardHTML = shuffle(cards).map(function(card) {
@@ -19,14 +33,15 @@ function initGame() {      //video with Udacity Mike //
     deck.innerHTML = cardHTML.join(" ");
     makeStars(star);
 }
-// timer not sure it works, but I tried. the clear interval erases cards so I disabled it//with help from https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript
-    second = t;
-    minute = 0;
-    var timer = document.querySelector(".timer");
-    timer.innerHTML = "0 mins 0 secs";
-   // clearInterval(interval);
 
+// This timer did not work, am replacing it. See above.
+ //   second = t;
+  //  minute = 0;
+   // var timer = document.querySelector(".timer");
+   // timer.innerHTML = "0 mins 0 secs";
+   // clearInterval(interval);
 initGame();
+
 
 function makeCard(card) { //with help form Robert//youtube videos//https://www.youtube.com/watch?v=c_ohDPWmsM0&t=338s
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
@@ -130,14 +145,14 @@ function makeStars(el) { //help from Robert/youtube videos
 }
 
 function winner(moves) { //help form Robert and youtube videos and slack//https://www.youtube.com/watch?v=3MMjTYVs5is&t=3s
-    showWin.style.display = 'marker';
-    showWin.innerHTML = `<h1>Congrats! It took ${moves} moves</h1>
+    cardsWin.style.display = 'marker';
+    cardsWin.innerHTML = `<h1>Congrats! It took ${moves} moves</h1>
                                 <h1>You earned ${star} stars</h1>
                                 <h1>It took ${t} seconds!</h1>
                                   <button id='reset-won'> Play Again?</button>`;
-    showWin, addEventListener('click', function(e) {
+    cardsWin, addEventListener('click', function(e) {
         if (e.target.id == 'reset-won') {
-            showWin.style.display = 'none';
+            cardsWin.style.display = 'none';
             reset();
         }
     });
@@ -147,5 +162,5 @@ function winner(moves) { //help form Robert and youtube videos and slack//https:
 restart.addEventListener('click', reset);
 
 function reset() {
-    location.reload();
+  //  location.reload();
 }
